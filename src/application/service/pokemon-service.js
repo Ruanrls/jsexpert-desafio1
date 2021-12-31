@@ -1,4 +1,7 @@
-const { POKEMON_MAX_RANGE } = require("../../infra/config/constants");
+const {
+  POKEMON_MAX_RANGE,
+  DEFAULT_QUANTITY_OF_POKEMONS,
+} = require("../../infra/config/constants");
 
 class PokemonService {
   constructor(PokemonRepository) {
@@ -11,7 +14,7 @@ class PokemonService {
     return randomPokemon;
   }
 
-  async getTeam(quantityOfPokemons) {
+  async getTeam(quantityOfPokemons = DEFAULT_QUANTITY_OF_POKEMONS) {
     let pokemons = [];
 
     for await (const i of Array(quantityOfPokemons)) {

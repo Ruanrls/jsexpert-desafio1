@@ -18,7 +18,7 @@ const routes = {
   "/team:get": async (_, response) => {
     const pokemonRepository = new PokemonRepository();
     const pokemonService = new PokemonService(pokemonRepository);
-    const pokemons = await pokemonService.getTeam(5);
+    const pokemons = await pokemonService.getTeam();
 
     return response.end(JSON.stringify(pokemons));
   },
