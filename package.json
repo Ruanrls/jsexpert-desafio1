@@ -1,0 +1,15 @@
+{
+  "name": "jsexpert-desafio1",
+  "version": "1.0.0",
+  "description": "Primeiro desafio para o JS Expert",
+  "main": "src/index.js",
+  "repository": "https://github.com/Ruanrls/jsexpert-desafio1.git",
+  "author": "Ruan Silva <ruanrafaelleite@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
