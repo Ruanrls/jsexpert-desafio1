@@ -1,0 +1,4 @@
+const POKEMON_MAX_RANGE = 255;
+const MAX_MOVES_TO_SHOW = 3;
+
+module.exports = { POKEMON_MAX_RANGE, MAX_MOVES_TO_SHOW };
