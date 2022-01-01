@@ -1,23 +1,30 @@
 const {
   POKEMON_MAX_RANGE,
   DEFAULT_QUANTITY_OF_POKEMONS,
-} = require("../../infra/config/constants");
+} = require("../../config/constants");
 
 class PokemonService {
   constructor(PokemonRepository) {
     this.pokemonRepository = PokemonRepository;
   }
 
-  async getRandomPokemon(maxPokemonRange = POKEMON_MAX_RANGE) {
-    const randomId = Math.floor(Math.random() * maxPokemonRange) + 1;
+  getRandomPokemon = async (
+    params = { maxPokemonRange: POKEMON_MAX_RANGE }
+  ) => {
+    const { maxPokemonRange } = params;
+
+    const randomId = Math.floor(Math.random() * parseInt(maxPokemonRange)) + 1;
     const randomPokemon = await this.pokemonRepository.getPokemon(randomId);
     return randomPokemon;
-  }
+  };
 
-  async getTeam(quantityOfPokemons = DEFAULT_QUANTITY_OF_POKEMONS) {
+  getTeam = async (
+    params = { quantityOfPokemons: DEFAULT_QUANTITY_OF_POKEMONS }
+  ) => {
+    const { quantityOfPokemons } = params;
+
     let pokemons = [];
-
-    for await (const i of Array(quantityOfPokemons)) {
+    for await (const i of Array(parseInt(quantityOfPokemons))) {
       const randomPokemon = await this.getRandomPokemon();
       pokemons.push(randomPokemon);
     }
@@ -26,7 +33,7 @@ class PokemonService {
     return {
       pokemons: pokemonList,
     };
-  }
+  };
 }
 
 module.exports = PokemonService;

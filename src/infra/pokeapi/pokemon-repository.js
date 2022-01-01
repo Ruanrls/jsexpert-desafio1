@@ -1,9 +1,7 @@
 const https = require("https");
-const { MAX_MOVES_TO_SHOW } = require("../config/constants");
+const { MAX_MOVES_TO_SHOW } = require("../../config/constants");
 
 class PokemonRepository {
-  constructor() {}
-
   static async request(options) {
     return new Promise((resolve, reject) => {
       const req = https.request(options, (response) => {
@@ -26,7 +24,7 @@ class PokemonRepository {
     };
   }
 
-  async getPokemon(pokemonId) {
+  getPokemon = async (pokemonId) => {
     const options = {
       hostname: "pokeapi.co",
       path: `/api/v2/pokemon/${pokemonId}`,
@@ -36,7 +34,7 @@ class PokemonRepository {
     const response = await PokemonRepository.request(options);
     const formattedPokemon = PokemonRepository.formatPokemonData(response);
     return formattedPokemon;
-  }
+  };
 }
 
 module.exports = PokemonRepository;
